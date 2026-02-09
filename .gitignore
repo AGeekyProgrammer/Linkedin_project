@@ -1,0 +1,7 @@
+data
+experiment
+.claude
+.ipynb_checkpoints
+.env
+.DS_Store
+src/profile/scrape_profiles.ipynb

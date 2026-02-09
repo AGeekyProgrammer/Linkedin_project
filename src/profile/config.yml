@@ -1,0 +1,103 @@
+# LinkedIn Profile Finder Configuration
+# Edit this file to customize your profile search parameters
+
+# Total number of profiles to collect
+TOTAL_PROFILES = 1000
+
+# Output file name
+OUTPUT_FILE = "linkedin_profiles.csv"
+
+# Category Distribution (must add up to TOTAL_PROFILES)
+# Format: category_name: count
+CATEGORIES:
+  Technical Solos: 250        # 25% - Building LLM agents, RAG systems
+  Educational Solos: 250      # 25% - Teaching AI literacy, prompting
+  Scale-ups: 400              # 40% - Mid-sized companies (50-500 employees)
+  North Stars: 100            # 10% - Top 100 companies
+
+# Follower Distribution for Solopreneurs (percentages must add up to 100)
+# Applied to both Technical and Educational Solopreneurs
+FOLLOWER_DISTRIBUTION:
+  500-3k: 20%      # Smaller accounts
+  3k-5k: 40%       # Medium accounts
+  5k-10k: 25%      # Growing accounts
+  10k+: 15%        # Established accounts
+
+# Search Keywords by Category
+SEARCH_KEYWORDS:
+  Technical Solos:
+    - "LLM developer"
+    - "AI consultant"
+    - "RAG systems"
+    - "AI automation"
+    - "Custom GPT builder"
+    - "AI agent developer"
+    - "ML engineer consultant"
+    - "Independent AI contractor"
+  
+  Educational Solos:
+    - "AI educator"
+    - "Prompt engineering teacher"
+    - "AI literacy"
+    - "AI course creator"
+    - "ChatGPT trainer"
+    - "AI workflow consultant"
+    - "AI workshop facilitator"
+  
+  Scale-ups:
+    - "AI Engineer"
+    - "ML Engineer"
+    - "Data Scientist"
+    - "AI Product Manager"
+    - "Applied AI"
+    - "Machine Learning Engineer"
+    - "AI Solutions Architect"
+  
+  North Stars:
+    - "Head of AI"
+    - "VP of Machine Learning"
+    - "Chief AI Officer"
+    - "Director of AI"
+    - "AI Research Lead"
+    - "Principal ML Engineer"
+
+# Company Size for Scale-ups
+SCALEUP_COMPANY_SIZE:
+  min: 50
+  max: 500
+
+# Top Companies for North Stars (examples)
+TOP_COMPANIES:
+  - Google
+  - Microsoft
+  - Meta
+  - Amazon
+  - Apple
+  - OpenAI
+  - Anthropic
+  - NVIDIA
+  - Tesla
+  - JPMorgan Chase
+  - Goldman Sachs
+  - Netflix
+  - Uber
+  - Airbnb
+
+# Rate Limiting (seconds between requests)
+RATE_LIMIT_DELAY: 2
+
+# Batch Size for Scale-ups search
+SCALEUP_BATCH_SIZE: 50
+
+# API Configuration
+API_URL: "https://api.openai.com/v1/chat/completions"
+MODEL: "gpt-4o"  # or "gpt-4-turbo" or "gpt-3.5-turbo"
+MAX_TOKENS: 4000
+
+# Enable/Disable Features
+FEATURES:
+  web_search_for_technical: true   # Search web for names before LinkedIn
+  prioritize_small_accounts: true  # Prioritize smaller follower counts
+  include_company_info: true       # Include company details
+  include_title_info: true         # Include job titles
+  verbose_logging: true            # Print detailed progress
