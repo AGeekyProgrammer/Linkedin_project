@@ -196,6 +196,384 @@
             .grid { grid-template-columns: 1fr; }
             .content { padding: 20px; }
         }
+
+        /* Career Path Explorer styles */
+        .cp-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(0,0,0,0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            align-items: center;
+            border-radius: 12px 12px 0 0;
+        }
+        .cp-control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .cp-control-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+        }
+        .cp-controls select, .cp-controls input[type="range"] {
+            padding: 10px 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            color: #e8e8e8;
+            font-size: 14px;
+            cursor: pointer;
+            min-width: 200px;
+        }
+        .cp-controls select:hover, .cp-controls input:hover {
+            border-color: #00d9ff;
+        }
+        .cp-controls select:focus, .cp-controls input:focus {
+            outline: none;
+            border-color: #00d9ff;
+            box-shadow: 0 0 0 3px rgba(0,217,255,0.2);
+        }
+
+        .cp-category-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 15px 20px;
+            background: rgba(0,0,0,0.2);
+        }
+        .cp-category-tab {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cp-category-tab:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+        .cp-category-tab.active {
+            background: linear-gradient(135deg, rgba(0,217,255,0.3), rgba(0,255,136,0.2));
+            border-color: #00d9ff;
+            color: #00d9ff;
+        }
+        .cp-category-tab .count {
+            background: rgba(0,0,0,0.3);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 11px;
+        }
+
+        .cp-main-content {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            min-height: 500px;
+        }
+
+        .cp-sidebar {
+            background: rgba(0,0,0,0.2);
+            border-right: 1px solid rgba(255,255,255,0.05);
+            padding: 20px;
+            overflow-y: auto;
+            max-height: 700px;
+        }
+        .cp-sidebar h3 {
+            font-size: 14px;
+            color: #00d9ff;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .cp-profile-mini {
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+        .cp-profile-mini:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(0,217,255,0.3);
+        }
+        .cp-profile-mini.selected {
+            background: rgba(0,217,255,0.1);
+            border-color: #00d9ff;
+        }
+        .cp-profile-mini h4 {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .cp-profile-mini .headline {
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .cp-profile-mini .metrics {
+            display: flex;
+            gap: 15px;
+            font-size: 11px;
+        }
+        .cp-profile-mini .metric {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .cp-profile-mini .metric-value {
+            color: #00ff88;
+            font-weight: 600;
+        }
+
+        .cp-visualization {
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .cp-career-path-container {
+            background: rgba(255,255,255,0.02);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 25px;
+        }
+        .cp-career-path-container h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        .cp-career-path-container .subtitle {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 25px;
+        }
+
+        .cp-career-timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .cp-career-timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #00d9ff, #00ff88, #ff6b6b);
+            border-radius: 2px;
+        }
+
+        .cp-timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+            padding-left: 25px;
+        }
+        .cp-timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #1a1a2e;
+            border: 3px solid #00d9ff;
+        }
+        .cp-timeline-item.current::before {
+            background: #00ff88;
+            border-color: #00ff88;
+            box-shadow: 0 0 10px rgba(0,255,136,0.5);
+        }
+        .cp-timeline-item .position {
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .cp-timeline-item .company {
+            font-size: 13px;
+            color: #00d9ff;
+            margin-bottom: 4px;
+        }
+        .cp-timeline-item .duration {
+            font-size: 12px;
+            color: #666;
+        }
+        .cp-timeline-item .description {
+            font-size: 12px;
+            color: #888;
+            margin-top: 8px;
+            line-height: 1.5;
+            display: none;
+        }
+        .cp-timeline-item.expanded .description {
+            display: block;
+        }
+
+        .cp-stats-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .cp-stat-card {
+            background: rgba(255,255,255,0.03);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .cp-stat-card .value {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #00d9ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .cp-stat-card .label {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        .cp-no-selection {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 400px;
+            color: #666;
+            text-align: center;
+        }
+        .cp-no-selection svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        .cp-loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+            color: #888;
+        }
+        .cp-loading::after {
+            content: '';
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(0,217,255,0.2);
+            border-top-color: #00d9ff;
+            border-radius: 50%;
+            animation: cp-spin 1s linear infinite;
+            margin-left: 15px;
+        }
+        @keyframes cp-spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .cp-range-display {
+            font-size: 12px;
+            color: #00d9ff;
+            min-width: 80px;
+            text-align: right;
+        }
+        .cp-range-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cp-controls input[type="range"] {
+            -webkit-appearance: none;
+            width: 200px;
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            padding: 0;
+        }
+        .cp-controls input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #00d9ff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .cp-aggregate-view {
+            display: none;
+        }
+        .cp-aggregate-view.active {
+            display: block;
+        }
+
+        .cp-sankey-container {
+            width: 100%;
+            height: 500px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .cp-flow-path {
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .cp-flow-path .path-roles {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .cp-flow-path .role-node {
+            background: linear-gradient(135deg, rgba(0,217,255,0.2), rgba(0,255,136,0.1));
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+        .cp-flow-path .arrow {
+            color: #00ff88;
+            font-size: 16px;
+        }
+        .cp-flow-path .path-count {
+            font-size: 11px;
+            color: #888;
+        }
+
+        @media (max-width: 1024px) {
+            .cp-main-content {
+                grid-template-columns: 1fr;
+            }
+            .cp-sidebar {
+                max-height: 300px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -287,12 +665,91 @@
 
         <!-- Career Journeys Section -->
         <div class="section" id="careers">
-            <div class="grid">
-                <div class="card card-full">
-                    <h3>Career Stage Transitions</h3>
-                    <p class="card-subtitle">How professionals move between career stages</p>
-                    <div class="sankey-container" id="careerSankey"></div>
+            <!-- Career Path Explorer -->
+            <div style="margin-bottom: 30px;">
+                <div class="card card-full" style="padding: 0; overflow: hidden;">
+                    <div style="padding: 25px 25px 0 25px;">
+                        <h3 style="margin-bottom: 5px;">Career Path Explorer</h3>
+                        <p class="card-subtitle" style="margin: 0 0 15px 0;">Browse individual career paths, filter by category and engagement metrics</p>
+                    </div>
+
+                    <div class="cp-controls">
+                        <div class="cp-control-group">
+                            <span class="cp-control-label">Sort By</span>
+                            <select id="cp-sortBy">
+                                <option value="followers">Followers (High to Low)</option>
+                                <option value="followers_asc">Followers (Low to High)</option>
+                                <option value="connections">Connections (High to Low)</option>
+                                <option value="connections_asc">Connections (Low to High)</option>
+                                <option value="experience">Experience Count</option>
+                            </select>
+                        </div>
+                        <div class="cp-control-group">
+                            <span class="cp-control-label">Min Followers</span>
+                            <div class="cp-range-wrapper">
+                                <input type="range" id="cp-minFollowers" min="0" max="100000" value="0" step="100">
+                                <span class="cp-range-display" id="cp-minFollowersDisplay">0</span>
+                            </div>
+                        </div>
+                        <div class="cp-control-group">
+                            <span class="cp-control-label">Min Connections</span>
+                            <div class="cp-range-wrapper">
+                                <input type="range" id="cp-minConnections" min="0" max="30000" value="0" step="100">
+                                <span class="cp-range-display" id="cp-minConnectionsDisplay">0</span>
+                            </div>
+                        </div>
+                        <div class="cp-control-group">
+                            <span class="cp-control-label">View Mode</span>
+                            <select id="cp-viewMode">
+                                <option value="individual">Individual Paths</option>
+                                <option value="aggregate">Aggregate Flow</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="cp-category-tabs" id="cp-categoryTabs">
+                        <div class="cp-loading">Loading categories...</div>
+                    </div>
+
+                    <div class="cp-main-content">
+                        <div class="cp-sidebar">
+                            <h3>Profiles <span id="cp-profileCount">(0)</span></h3>
+                            <div id="cp-profileList">
+                                <div class="cp-loading">Loading profiles...</div>
+                            </div>
+                        </div>
+
+                        <div class="cp-visualization">
+                            <div class="cp-stats-summary" id="cp-statsSummary"></div>
+
+                            <div id="cp-individualView">
+                                <div class="cp-no-selection" id="cp-noSelection">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M12 4.5v15m7.5-7.5h-15"/>
+                                    </svg>
+                                    <p>Select a profile from the sidebar to view their career path</p>
+                                </div>
+                                <div id="cp-careerPathDisplay"></div>
+                            </div>
+
+                            <div class="cp-aggregate-view" id="cp-aggregateView">
+                                <div class="cp-career-path-container">
+                                    <h3>Common Career Transitions</h3>
+                                    <p class="subtitle">Most frequent role progressions in this category</p>
+                                    <div id="cp-aggregatePaths"></div>
+                                </div>
+                                <div class="cp-career-path-container">
+                                    <h3>Career Flow Visualization</h3>
+                                    <p class="subtitle">Visual representation of career progressions</p>
+                                    <div class="cp-sankey-container" id="cp-sankeyChart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+
+            <div class="grid">
                 <div class="card card-full">
                     <h3>Time at Each Career Stage</h3>
                     <p class="card-subtitle">Average years in each role type</p>
@@ -423,6 +880,9 @@
                 document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
                 tab.classList.add('active');
                 document.getElementById(tab.dataset.section).classList.add('active');
+                if (tab.dataset.section === 'careers') {
+                    loadCareerPathData();
+                }
             });
         });
 
@@ -591,41 +1051,6 @@
         }
 
         // Career Charts
-        function renderCareerSankey() {
-            const container = document.getElementById('careerSankey');
-            const width = container.clientWidth;
-            const height = 450;
-            const flows = analyticsData.career_stage_transitions || [];
-            if (!flows.length) return;
-
-            const nodes = [], nodeMap = {};
-            flows.forEach(f => {
-                if (!nodeMap['from_'+f.from]) { nodeMap['from_'+f.from] = nodes.length; nodes.push({name: f.from}); }
-                if (!nodeMap['to_'+f.to]) { nodeMap['to_'+f.to] = nodes.length; nodes.push({name: f.to}); }
-            });
-            const links = flows.map(f => ({ source: nodeMap['from_'+f.from], target: nodeMap['to_'+f.to], value: f.count }));
-
-            const svg = d3.select(container).append('svg').attr('width', width).attr('height', height);
-            const sankey = d3.sankey().nodeWidth(20).nodePadding(12).extent([[60, 20], [width - 60, height - 20]]);
-            const { nodes: sNodes, links: sLinks } = sankey({ nodes: nodes.map(d => ({...d})), links: links.map(d => ({...d})) });
-
-            svg.append('g').selectAll('rect').data(sNodes).join('rect')
-                .attr('x', d => d.x0).attr('y', d => d.y0)
-                .attr('height', d => Math.max(d.y1 - d.y0, 1)).attr('width', d => d.x1 - d.x0)
-                .attr('fill', d => colors.roles[d.name] || '#666').attr('rx', 3);
-
-            svg.append('g').attr('fill', 'none').selectAll('path').data(sLinks).join('path')
-                .attr('d', d3.sankeyLinkHorizontal())
-                .attr('stroke', d => colors.roles[d.source.name] || '#666')
-                .attr('stroke-width', d => Math.max(1, d.width)).attr('stroke-opacity', 0.35);
-
-            svg.append('g').selectAll('text').data(sNodes).join('text')
-                .attr('x', d => d.x0 < width/2 ? d.x0 - 6 : d.x1 + 6)
-                .attr('y', d => (d.y1 + d.y0) / 2).attr('dy', '0.35em')
-                .attr('text-anchor', d => d.x0 < width/2 ? 'end' : 'start')
-                .attr('fill', '#e8e8e8').attr('font-size', '11px').text(d => d.name);
-        }
-
         function renderStageDurations() {
             const durations = analyticsData.stage_durations || {};
             const maxAvg = Math.max(...Object.values(durations).map(d => d.avg));
@@ -864,7 +1289,6 @@
         renderBioLengthChart();
         renderBioTacticsTable();
         renderTopProfilesList();
-        renderCareerSankey();
         renderStageDurations();
         renderCareerPaths3();
         renderCareerLadder();
@@ -880,6 +1304,482 @@
         renderEntrepreneurProfiles();
         renderProfilesList();
         renderInsights();
+
+        // ==========================================
+        // Career Path Explorer
+        // ==========================================
+        let cpAllProfiles = [];
+        let cpFilteredProfiles = [];
+        let cpSelectedCategory = 'all';
+        let cpSelectedProfile = null;
+        let cpDataLoaded = false;
+
+        const cpCategories = {
+            'all': { name: 'All Profiles', keywords: [] },
+            'ai-ml': { name: 'AI & Machine Learning', keywords: ['ai', 'artificial intelligence', 'machine learning', 'ml', 'deep learning', 'llm', 'gpt', 'data science'] },
+            'product': { name: 'Product Management', keywords: ['product manager', 'product lead', 'head of product', 'director of product', 'vp product', 'cpo'] },
+            'engineering': { name: 'Engineering', keywords: ['software engineer', 'developer', 'engineering manager', 'cto', 'tech lead', 'architect', 'full stack', 'backend', 'frontend'] },
+            'leadership': { name: 'Executive/Leadership', keywords: ['ceo', 'coo', 'cfo', 'founder', 'co-founder', 'managing director', 'president', 'partner', 'chief'] },
+            'education': { name: 'Education', keywords: ['teacher', 'professor', 'educator', 'instructor', 'academic', 'school', 'university', 'education'] },
+            'consulting': { name: 'Consulting', keywords: ['consultant', 'advisor', 'consulting', 'strategy', 'strategist'] },
+            'marketing': { name: 'Marketing & Growth', keywords: ['marketing', 'growth', 'brand', 'content', 'seo', 'digital marketing', 'cmo'] },
+            'sales': { name: 'Sales & BD', keywords: ['sales', 'business development', 'account executive', 'revenue', 'partnerships'] }
+        };
+
+        async function loadCareerPathData() {
+            if (cpDataLoaded) return;
+            try {
+                const response = await fetch('../../data/df_cleaned.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error: ${response.status} ${response.statusText}`);
+                }
+                const text = await response.text();
+
+                if (!text || text.trim().length === 0) {
+                    throw new Error('Empty response from server');
+                }
+
+                const lines = text.trim().split('\n');
+                let parseErrors = 0;
+
+                cpAllProfiles = lines.map((line, index) => {
+                    try {
+                        const profile = JSON.parse(line);
+                        profile._id = index;
+                        return profile;
+                    } catch (e) {
+                        parseErrors++;
+                        return null;
+                    }
+                }).filter(p => p !== null);
+
+                if (cpAllProfiles.length === 0) {
+                    throw new Error(`No valid profiles found. Parse errors: ${parseErrors}`);
+                }
+
+                cpDataLoaded = true;
+                initializeCareerPathUI();
+            } catch (error) {
+                console.error('Error loading career path data:', error);
+                const errorMsg = error.message.includes('Failed to fetch')
+                    ? 'Failed to load data. If opening this file directly, please use a local web server (e.g., python3 -m http.server).'
+                    : `Error loading data: ${error.message}`;
+                document.getElementById('cp-profileList').innerHTML = `<p style="color: #ff6b6b; padding: 10px;">${errorMsg}</p>`;
+                document.getElementById('cp-categoryTabs').innerHTML = `<p style="color: #ff6b6b; padding: 20px;">${errorMsg}</p>`;
+            }
+        }
+
+        function cpCategorizeProfile(profile) {
+            const text = [
+                profile.headline || '',
+                ...(profile.experience || []).map(e => e.position || '').slice(0, 3)
+            ].join(' ').toLowerCase();
+
+            const matches = [];
+            for (const [key, cat] of Object.entries(cpCategories)) {
+                if (key === 'all') continue;
+                if (cat.keywords.some(kw => text.includes(kw))) {
+                    matches.push(key);
+                }
+            }
+            return matches.length > 0 ? matches : ['other'];
+        }
+
+        function initializeCareerPathUI() {
+            const categoryCounts = { 'all': cpAllProfiles.length };
+            cpAllProfiles.forEach(p => {
+                const cats = cpCategorizeProfile(p);
+                cats.forEach(c => {
+                    categoryCounts[c] = (categoryCounts[c] || 0) + 1;
+                });
+            });
+
+            const tabsHtml = Object.entries(cpCategories).map(([key, cat]) => {
+                const count = categoryCounts[key] || 0;
+                if (count === 0 && key !== 'all') return '';
+                return `
+                    <div class="cp-category-tab ${key === 'all' ? 'active' : ''}" data-category="${key}">
+                        ${cat.name}
+                        <span class="count">${count}</span>
+                    </div>
+                `;
+            }).join('');
+
+            const otherCount = categoryCounts['other'] || 0;
+            const otherHtml = otherCount > 0 ? `
+                <div class="cp-category-tab" data-category="other">
+                    Other
+                    <span class="count">${otherCount}</span>
+                </div>
+            ` : '';
+
+            document.getElementById('cp-categoryTabs').innerHTML = tabsHtml + otherHtml;
+
+            document.querySelectorAll('.cp-category-tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    document.querySelectorAll('.cp-category-tab').forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    cpSelectedCategory = tab.dataset.category;
+                    cpSelectedProfile = null;
+                    cpFilterAndRenderProfiles();
+                });
+            });
+
+            document.getElementById('cp-sortBy').addEventListener('change', cpFilterAndRenderProfiles);
+            document.getElementById('cp-minFollowers').addEventListener('input', (e) => {
+                document.getElementById('cp-minFollowersDisplay').textContent = cpFormatNumber(e.target.value);
+                cpFilterAndRenderProfiles();
+            });
+            document.getElementById('cp-minConnections').addEventListener('input', (e) => {
+                document.getElementById('cp-minConnectionsDisplay').textContent = cpFormatNumber(e.target.value);
+                cpFilterAndRenderProfiles();
+            });
+            document.getElementById('cp-viewMode').addEventListener('change', (e) => {
+                const isAggregate = e.target.value === 'aggregate';
+                document.getElementById('cp-individualView').style.display = isAggregate ? 'none' : 'block';
+                document.getElementById('cp-aggregateView').classList.toggle('active', isAggregate);
+                if (isAggregate) {
+                    cpRenderAggregateView();
+                }
+            });
+
+            cpFilterAndRenderProfiles();
+        }
+
+        function cpFilterAndRenderProfiles() {
+            const minFollowers = parseInt(document.getElementById('cp-minFollowers').value) || 0;
+            const minConnections = parseInt(document.getElementById('cp-minConnections').value) || 0;
+            const sortBy = document.getElementById('cp-sortBy').value;
+
+            cpFilteredProfiles = cpAllProfiles.filter(p => {
+                if (cpSelectedCategory === 'all') return true;
+                const cats = cpCategorizeProfile(p);
+                return cats.includes(cpSelectedCategory);
+            });
+
+            cpFilteredProfiles = cpFilteredProfiles.filter(p => {
+                const followers = p.followerCount || 0;
+                const connections = p.connectionsCount || 0;
+                return followers >= minFollowers && connections >= minConnections;
+            });
+
+            cpFilteredProfiles.sort((a, b) => {
+                switch (sortBy) {
+                    case 'followers':
+                        return (b.followerCount || 0) - (a.followerCount || 0);
+                    case 'followers_asc':
+                        return (a.followerCount || 0) - (b.followerCount || 0);
+                    case 'connections':
+                        return (b.connectionsCount || 0) - (a.connectionsCount || 0);
+                    case 'connections_asc':
+                        return (a.connectionsCount || 0) - (b.connectionsCount || 0);
+                    case 'experience':
+                        return (b.experience?.length || 0) - (a.experience?.length || 0);
+                    default:
+                        return 0;
+                }
+            });
+
+            cpRenderProfileList();
+            cpRenderStats();
+
+            if (document.getElementById('cp-viewMode').value === 'aggregate') {
+                cpRenderAggregateView();
+            }
+        }
+
+        function cpRenderProfileList() {
+            const container = document.getElementById('cp-profileList');
+            document.getElementById('cp-profileCount').textContent = `(${cpFilteredProfiles.length})`;
+
+            if (cpFilteredProfiles.length === 0) {
+                container.innerHTML = '<p style="color: #888; text-align: center; padding: 20px;">No profiles match the current filters</p>';
+                return;
+            }
+
+            container.innerHTML = cpFilteredProfiles.map(p => {
+                const name = cpExtractName(p);
+                return `
+                    <div class="cp-profile-mini" data-id="${p._id}">
+                        <h4>${name}</h4>
+                        <div class="headline">${p.headline || 'No headline'}</div>
+                        <div class="metrics">
+                            <div class="metric">
+                                <span>Followers:</span>
+                                <span class="metric-value">${cpFormatNumber(p.followerCount || 0)}</span>
+                            </div>
+                            <div class="metric">
+                                <span>Connections:</span>
+                                <span class="metric-value">${cpFormatNumber(p.connectionsCount || 0)}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            container.querySelectorAll('.cp-profile-mini').forEach(el => {
+                el.addEventListener('click', () => {
+                    document.querySelectorAll('.cp-profile-mini').forEach(e => e.classList.remove('selected'));
+                    el.classList.add('selected');
+                    const id = parseInt(el.dataset.id);
+                    cpSelectedProfile = cpAllProfiles.find(p => p._id === id);
+                    cpRenderCareerPath(cpSelectedProfile);
+                });
+            });
+        }
+
+        function cpRenderStats() {
+            const totalFollowers = cpFilteredProfiles.reduce((sum, p) => sum + (p.followerCount || 0), 0);
+            const totalConnections = cpFilteredProfiles.reduce((sum, p) => sum + (p.connectionsCount || 0), 0);
+            const avgExperience = cpFilteredProfiles.length > 0
+                ? Math.round(cpFilteredProfiles.reduce((sum, p) => sum + (p.experience?.length || 0), 0) / cpFilteredProfiles.length)
+                : 0;
+
+            document.getElementById('cp-statsSummary').innerHTML = `
+                <div class="cp-stat-card">
+                    <div class="value">${cpFilteredProfiles.length}</div>
+                    <div class="label">Profiles</div>
+                </div>
+                <div class="cp-stat-card">
+                    <div class="value">${cpFormatNumber(totalFollowers)}</div>
+                    <div class="label">Total Followers</div>
+                </div>
+                <div class="cp-stat-card">
+                    <div class="value">${cpFormatNumber(totalConnections)}</div>
+                    <div class="label">Total Connections</div>
+                </div>
+                <div class="cp-stat-card">
+                    <div class="value">${avgExperience}</div>
+                    <div class="label">Avg Positions</div>
+                </div>
+            `;
+        }
+
+        function cpRenderCareerPath(profile) {
+            if (!profile) return;
+
+            document.getElementById('cp-noSelection').style.display = 'none';
+            const container = document.getElementById('cp-careerPathDisplay');
+
+            const experience = profile.experience || [];
+            const name = cpExtractName(profile);
+
+            const sortedExperience = [...experience].reverse();
+
+            const nameLink = profile.linkedinUrl
+                ? `<a href="${profile.linkedinUrl}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; border-bottom: 2px solid #00d9ff;">${name}</a>`
+                : name;
+
+            container.innerHTML = `
+                <div class="cp-career-path-container">
+                    <h3>${nameLink}'s Career Journey</h3>
+                    <p class="subtitle">
+                        ${cpFormatNumber(profile.followerCount || 0)} followers ·
+                        ${cpFormatNumber(profile.connectionsCount || 0)} connections ·
+                        ${experience.length} positions
+                    </p>
+
+                    <div class="cp-career-timeline">
+                        ${sortedExperience.map((exp, i) => {
+                            const isCurrent = i === sortedExperience.length - 1 && !exp.endDate?.text?.includes('20');
+                            return `
+                                <div class="cp-timeline-item ${isCurrent ? 'current' : ''}" onclick="this.classList.toggle('expanded')">
+                                    <div class="position">${exp.position || 'Unknown Position'}</div>
+                                    <div class="company">${exp.companyName || 'Unknown Company'}</div>
+                                    <div class="duration">
+                                        ${exp.startDate?.text || '?'} - ${exp.endDate?.text || 'Present'}
+                                        ${exp.duration ? ` · ${exp.duration}` : ''}
+                                    </div>
+                                    ${exp.description ? `<div class="description">${exp.description.substring(0, 300)}${exp.description.length > 300 ? '...' : ''}</div>` : ''}
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function cpRenderAggregateView() {
+            const pathCounts = {};
+
+            cpFilteredProfiles.forEach(profile => {
+                const experience = profile.experience || [];
+                if (experience.length < 2) return;
+
+                const roles = experience.slice(0, 5).map(e => cpSimplifyRole(e.position || '')).filter(r => r);
+
+                for (let i = roles.length - 1; i > 0; i--) {
+                    const from = roles[i];
+                    const to = roles[i - 1];
+                    const key = `${from} -> ${to}`;
+                    pathCounts[key] = (pathCounts[key] || 0) + 1;
+                }
+            });
+
+            const topPaths = Object.entries(pathCounts)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 15);
+
+            document.getElementById('cp-aggregatePaths').innerHTML = topPaths.map(([path, count]) => {
+                const [from, to] = path.split(' -> ');
+                return `
+                    <div class="cp-flow-path">
+                        <div class="path-roles">
+                            <span class="role-node">${from}</span>
+                            <span class="arrow">→</span>
+                            <span class="role-node">${to}</span>
+                        </div>
+                        <div class="path-count">${count} professional${count > 1 ? 's' : ''} made this transition</div>
+                    </div>
+                `;
+            }).join('') || '<p style="color: #888;">Not enough data for pattern analysis</p>';
+
+            cpRenderSankey(pathCounts);
+        }
+
+        function cpRenderSankey(pathCounts) {
+            const container = document.getElementById('cp-sankeyChart');
+            container.innerHTML = '';
+
+            if (Object.keys(pathCounts).length < 3) {
+                container.innerHTML = '<p style="color: #888; text-align: center; padding: 50px;">Not enough transitions to visualize</p>';
+                return;
+            }
+
+            const width = container.clientWidth;
+            const height = 500;
+
+            const nodeSet = new Set();
+            const links = [];
+
+            Object.entries(pathCounts).forEach(([path, count]) => {
+                if (count < 1) return;
+                const [from, to] = path.split(' -> ');
+                nodeSet.add(from);
+                nodeSet.add(to);
+                links.push({ source: from, target: to, value: count });
+            });
+
+            const nodes = Array.from(nodeSet).map(name => ({ name }));
+            const nodeIndex = {};
+            nodes.forEach((n, i) => nodeIndex[n.name] = i);
+
+            const sankeyLinks = links.map(l => ({
+                source: nodeIndex[l.source],
+                target: nodeIndex[l.target],
+                value: l.value
+            })).filter(l => l.source !== undefined && l.target !== undefined);
+
+            if (sankeyLinks.length === 0) {
+                container.innerHTML = '<p style="color: #888; text-align: center; padding: 50px;">No valid transitions to display</p>';
+                return;
+            }
+
+            const svg = d3.select(container)
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+
+            const sankey = d3.sankey()
+                .nodeWidth(20)
+                .nodePadding(15)
+                .extent([[20, 20], [width - 20, height - 20]]);
+
+            const graph = sankey({
+                nodes: nodes.map(d => Object.assign({}, d)),
+                links: sankeyLinks.map(d => Object.assign({}, d))
+            });
+
+            const gradientId = 'cp-gradient-' + Math.random().toString(36).substr(2, 9);
+
+            const gradient = svg.append('defs')
+                .append('linearGradient')
+                .attr('id', gradientId)
+                .attr('x1', '0%')
+                .attr('x2', '100%');
+
+            gradient.append('stop').attr('offset', '0%').attr('stop-color', '#00d9ff');
+            gradient.append('stop').attr('offset', '100%').attr('stop-color', '#00ff88');
+
+            svg.append('g')
+                .selectAll('path')
+                .data(graph.links)
+                .join('path')
+                .attr('d', d3.sankeyLinkHorizontal())
+                .attr('fill', 'none')
+                .attr('stroke', `url(#${gradientId})`)
+                .attr('stroke-opacity', 0.4)
+                .attr('stroke-width', d => Math.max(1, d.width));
+
+            svg.append('g')
+                .selectAll('rect')
+                .data(graph.nodes)
+                .join('rect')
+                .attr('x', d => d.x0)
+                .attr('y', d => d.y0)
+                .attr('height', d => Math.max(1, d.y1 - d.y0))
+                .attr('width', d => d.x1 - d.x0)
+                .attr('fill', '#00d9ff')
+                .attr('rx', 3);
+
+            svg.append('g')
+                .selectAll('text')
+                .data(graph.nodes)
+                .join('text')
+                .attr('x', d => d.x0 < width / 2 ? d.x1 + 6 : d.x0 - 6)
+                .attr('y', d => (d.y1 + d.y0) / 2)
+                .attr('dy', '0.35em')
+                .attr('text-anchor', d => d.x0 < width / 2 ? 'start' : 'end')
+                .attr('fill', '#e8e8e8')
+                .attr('font-size', '11px')
+                .text(d => d.name.length > 25 ? d.name.substring(0, 25) + '...' : d.name);
+        }
+
+        function cpExtractName(profile) {
+            if (profile.linkedinUrl) {
+                const match = profile.linkedinUrl.match(/\/in\/([^\/]+)/);
+                if (match) {
+                    return match[1].split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+                }
+            }
+            return 'Unknown';
+        }
+
+        function cpSimplifyRole(title) {
+            if (!title) return '';
+            const lower = title.toLowerCase();
+
+            if (lower.includes('ceo') || lower.includes('chief executive')) return 'CEO';
+            if (lower.includes('cto') || lower.includes('chief technology')) return 'CTO';
+            if (lower.includes('cfo') || lower.includes('chief financial')) return 'CFO';
+            if (lower.includes('coo') || lower.includes('chief operating')) return 'COO';
+            if (lower.includes('founder')) return 'Founder';
+            if (lower.includes('co-founder')) return 'Co-Founder';
+            if (lower.includes('vp') || lower.includes('vice president')) return 'VP';
+            if (lower.includes('director')) return 'Director';
+            if (lower.includes('head of')) return 'Head';
+            if (lower.includes('manager')) return 'Manager';
+            if (lower.includes('senior') && lower.includes('engineer')) return 'Senior Engineer';
+            if (lower.includes('engineer')) return 'Engineer';
+            if (lower.includes('consultant')) return 'Consultant';
+            if (lower.includes('analyst')) return 'Analyst';
+            if (lower.includes('teacher') || lower.includes('instructor')) return 'Educator';
+            if (lower.includes('professor')) return 'Professor';
+            if (lower.includes('intern')) return 'Intern';
+            if (lower.includes('associate')) return 'Associate';
+            if (lower.includes('specialist')) return 'Specialist';
+            if (lower.includes('lead')) return 'Lead';
+            if (lower.includes('product')) return 'Product';
+
+            const words = title.split(/[\s,|]+/).slice(0, 3);
+            return words.join(' ').substring(0, 30);
+        }
+
+        function cpFormatNumber(num) {
+            if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+            if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+            return num.toString();
+        }
     </script>
 </body>
 </html>
